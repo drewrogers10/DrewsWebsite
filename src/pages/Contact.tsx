@@ -1,8 +1,21 @@
+import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+interface ContactMethod {
+  title: string;
+  value: string;
+  href: string;
+  icon: React.ReactElement;
+}
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: ""
@@ -33,7 +46,7 @@ const Contact = () => {
     }
   };
 
-  const contactMethods = [
+  const contactMethods: ContactMethod[] = [
     {
       title: "Email",
       value: "drew@example.com",

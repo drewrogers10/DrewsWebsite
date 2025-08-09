@@ -1,10 +1,23 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import blogData from "../content/blog.json";
 
+interface BlogPost {
+  title: string;
+  slug: string;
+  date: string;
+  summary: string;
+  content: string;
+  tags: string[];
+  readTime: string;
+}
+
+const typedBlogData = blogData as BlogPost[];
+
 const Blog = () => {
   // Sort blog posts by date (newest first)
-  const sortedPosts = [...blogData].sort((a, b) => 
+  const sortedPosts = [...typedBlogData].sort((a, b) => 
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
