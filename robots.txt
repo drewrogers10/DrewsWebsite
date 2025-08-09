@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://drewrogers10.github.io/DrewsWebsite/sitemap.xml
