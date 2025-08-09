@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Building Accessible React Components",
+    "slug": "accessible-react-components",
+    "date": "2024-01-15",
+    "summary": "A comprehensive guide to creating React components that work for everyone, including users with disabilities.",
+    "content": "Accessibility should be a fundamental consideration in every React component we build. In this post, I'll share practical techniques for creating inclusive user interfaces that work for everyone...",
+    "tags": ["React", "Accessibility", "Web Development", "UX"],
+    "readTime": "8 min read"
+  },
+  {
+    "title": "TypeScript Best Practices for Large Applications",
+    "slug": "typescript-best-practices",
+    "date": "2024-01-08",
+    "summary": "Lessons learned from building and maintaining large-scale TypeScript applications in production.",
+    "content": "As applications grow in complexity, TypeScript becomes increasingly valuable for maintaining code quality and developer productivity. Here are the patterns and practices I've found most effective...",
+    "tags": ["TypeScript", "Software Architecture", "Best Practices"],
+    "readTime": "12 min read"
+  },
+  {
+    "title": "The Art of Code Reviews",
+    "slug": "art-of-code-reviews",
+    "date": "2024-01-01",
+    "summary": "How to give and receive constructive feedback that improves code quality and team collaboration.",
+    "content": "Code reviews are one of the most important practices in software development, yet they're often done poorly. Here's how to make them more effective and enjoyable for everyone involved...",
+    "tags": ["Code Review", "Team Collaboration", "Software Development"],
+    "readTime": "6 min read"
+  }
+]

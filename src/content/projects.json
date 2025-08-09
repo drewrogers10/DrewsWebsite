@@ -1,0 +1,68 @@
+[
+  {
+    "title": "AI Note Assistant",
+    "slug": "ai-note-assistant",
+    "summary": "Live handwriting analysis with intelligent pop-ups and suggestions for enhanced note-taking productivity.",
+    "description": "A revolutionary note-taking application that uses computer vision and AI to analyze handwritten notes in real-time. The app provides contextual suggestions, auto-completion, and smart organization features to enhance the traditional pen-and-paper experience.",
+    "tech": ["Swift", "VisionKit", "Core ML", "GPT-4", "UIKit"],
+    "images": ["/images/ai-note-1.png", "/images/ai-note-2.png"],
+    "github": "https://github.com/drewrogers10/ai-note-assistant",
+    "demo": "https://apps.apple.com/app/ai-note-assistant",
+    "features": [
+      "Real-time handwriting recognition",
+      "Contextual AI suggestions",
+      "Smart note organization",
+      "Cross-device synchronization",
+      "Privacy-focused local processing"
+    ],
+    "challenges": [
+      "Optimizing ML models for real-time performance",
+      "Balancing accuracy with battery life",
+      "Creating intuitive user interactions"
+    ]
+  },
+  {
+    "title": "Task Management Dashboard",
+    "slug": "task-dashboard",
+    "summary": "A modern, responsive task management application with team collaboration features and real-time updates.",
+    "description": "A comprehensive task management solution built for modern teams. Features include drag-and-drop kanban boards, real-time collaboration, advanced filtering, and detailed analytics to help teams stay organized and productive.",
+    "tech": ["React", "TypeScript", "Node.js", "Socket.io", "PostgreSQL", "Tailwind CSS"],
+    "images": ["/images/task-dashboard-1.png", "/images/task-dashboard-2.png"],
+    "github": "https://github.com/drewrogers10/task-dashboard",
+    "demo": "https://task-dashboard-demo.vercel.app",
+    "features": [
+      "Drag-and-drop kanban boards",
+      "Real-time team collaboration",
+      "Advanced filtering and search",
+      "Time tracking and analytics",
+      "Mobile-responsive design"
+    ],
+    "challenges": [
+      "Implementing real-time synchronization",
+      "Optimizing performance with large datasets",
+      "Creating accessible drag-and-drop interactions"
+    ]
+  },
+  {
+    "title": "Weather Visualization App",
+    "slug": "weather-viz",
+    "summary": "Interactive weather data visualization with beautiful charts and forecasting capabilities.",
+    "description": "An elegant weather application that transforms complex meteorological data into beautiful, interactive visualizations. Users can explore weather patterns, view detailed forecasts, and analyze historical trends through intuitive charts and maps.",
+    "tech": ["React", "D3.js", "OpenWeather API", "Chart.js", "Mapbox"],
+    "images": ["/images/weather-viz-1.png", "/images/weather-viz-2.png"],
+    "github": "https://github.com/drewrogers10/weather-viz",
+    "demo": "https://weather-viz-demo.netlify.app",
+    "features": [
+      "Interactive weather maps",
+      "7-day detailed forecasts",
+      "Historical weather analysis",
+      "Beautiful data visualizations",
+      "Location-based weather alerts"
+    ],
+    "challenges": [
+      "Processing large weather datasets",
+      "Creating smooth map interactions",
+      "Handling API rate limits efficiently"
+    ]
+  }
+]
