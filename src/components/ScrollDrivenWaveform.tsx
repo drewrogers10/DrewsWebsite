@@ -37,7 +37,10 @@ const ScrollDrivenWaveform: React.FC<ScrollDrivenWaveformProps> = ({
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
+    let isAnimating = true;
+
     const animate = (timestamp: number) => {
+      if (!isAnimating) return;
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -152,6 +155,7 @@ const ScrollDrivenWaveform: React.FC<ScrollDrivenWaveformProps> = ({
     animationRef.current = requestAnimationFrame(animate);
 
     return () => {
+      isAnimating = false;
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }

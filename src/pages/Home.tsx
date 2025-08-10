@@ -52,7 +52,7 @@ const Home = () => {
       <HorizontalScrollContainer containerRef={containerRef}>
         
         {/* Section 1: NOISE/CHAOS - Hero Introduction */}
-        <ScrollSectionComponent id="noise" chaosLevel={1.0}>
+        <ScrollSectionComponent id="chaos">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -102,7 +102,7 @@ const Home = () => {
         </ScrollSectionComponent>
 
         {/* Section 2: FILTERING - Skills & Approach */}
-        <ScrollSectionComponent id="filtering" chaosLevel={0.6}>
+        <ScrollSectionComponent id="filtering">
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -161,7 +161,7 @@ const Home = () => {
         </ScrollSectionComponent>
 
         {/* Section 3: ORGANIZING - Featured Work */}
-        <ScrollSectionComponent id="organizing" chaosLevel={0.3}>
+        <ScrollSectionComponent id="organizing">
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -236,7 +236,7 @@ const Home = () => {
         </ScrollSectionComponent>
 
         {/* Section 4: PURE SIGNAL - Contact & Call to Action */}
-        <ScrollSectionComponent id="signal" chaosLevel={0.0}>
+        <ScrollSectionComponent id="signal">
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             whileInView={{ opacity: 1, x: 0 }}
