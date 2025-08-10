@@ -82,7 +82,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header Section */}
-      <section className="section-padding bg-gradient-to-r from-primary to-secondary text-white">
+      <section className="section-padding bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

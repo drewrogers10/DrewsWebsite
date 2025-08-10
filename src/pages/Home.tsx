@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-primary via-secondary to-accent text-white px-4 pt-16">
+      <section className="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white px-4 pt-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ const Home = () => {
       </section>
 
       {/* Featured Work Preview */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-gray-800">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -89,10 +89,10 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Featured Work
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               A selection of projects that showcase my passion for creating meaningful digital experiences.
             </p>
           </motion.div>
@@ -109,7 +109,7 @@ const Home = () => {
       </section>
 
       {/* Skills Preview */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-gray-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -118,10 +118,10 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               What I Do
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
               I specialize in modern web development with a focus on user experience and accessibility.
             </p>
           </motion.div>
@@ -153,10 +153,10 @@ const Home = () => {
                 className="text-center p-6"
               >
                 <div className="text-4xl mb-4">{skill.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                   {skill.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   {skill.description}
                 </p>
               </motion.div>
