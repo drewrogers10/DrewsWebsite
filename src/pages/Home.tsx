@@ -1,180 +1,314 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import WaveformAnimation from "../components/WaveformAnimation";
+import { useHorizontalScroll, ScrollSection } from "../hooks/useHorizontalScroll";
+import HorizontalScrollContainer, { ScrollSection as ScrollSectionComponent } from "../components/HorizontalScrollContainer";
+import ScrollDrivenWaveform from "../components/ScrollDrivenWaveform";
+import HorizontalNavigation from "../components/HorizontalNavigation";
+import DynamicBackgroundFilter from "../components/DynamicBackgroundFilter";
 
 const Home = () => {
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white px-4 pt-16 relative overflow-hidden">
-        <WaveformAnimation />
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
-        >
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
-          >
-            Hi, I'm <span className="text-gray-300">Drew</span>
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="mb-8 text-lg md:text-2xl lg:text-3xl font-light max-w-3xl mx-auto"
-          >
-            Building elegant solutions with code
-          </motion.p>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="mb-12 text-base md:text-lg text-white/90 max-w-2xl mx-auto"
-          >
-            I'm a passionate developer focused on creating accessible, performant, and beautiful web experiences that make a difference.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <Link 
-              to="/projects" 
-              className="btn-primary text-lg px-8 py-4 inline-block"
-            >
-              View My Projects
-            </Link>
-            <Link 
-              to="/contact" 
-              className="btn-secondary text-lg px-8 py-4 inline-block text-white border-white hover:bg-white hover:text-primary"
-            >
-              Get In Touch
-            </Link>
-          </motion.div>
-        </motion.div>
-        
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-white/70"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </motion.div>
-        </motion.div>
-      </section>
+  // Define the sections for horizontal scrolling
+  const sections: ScrollSection[] = [
+    { id: 'noise', title: 'CHAOS', chaosLevel: 1.0, colorTheme: 'noise' },
+    { id: 'filtering', title: 'FILTERING', chaosLevel: 0.6, colorTheme: 'transition' },
+    { id: 'organizing', title: 'ORGANIZING', chaosLevel: 0.3, colorTheme: 'signal' },
+    { id: 'signal', title: 'SIGNAL', chaosLevel: 0.0, colorTheme: 'pure' }
+  ];
 
-      {/* Featured Work Preview */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-800">
-        <div className="container">
+  const {
+    containerRef,
+    scrollProgress,
+    currentSection,
+    isScrolling,
+    scrollToSection,
+    getChaosLevel
+  } = useHorizontalScroll(sections);
+
+  return (
+    <div className="min-h-screen relative">
+      {/* Dynamic Background Color Filter */}
+      <DynamicBackgroundFilter
+        scrollProgress={scrollProgress}
+        className="fixed inset-0"
+      />
+
+      {/* Global Waveform Background */}
+      <ScrollDrivenWaveform
+        chaosLevel={getChaosLevel()}
+        scrollProgress={scrollProgress}
+        isScrolling={isScrolling}
+        className="fixed inset-0"
+      />
+
+      {/* Horizontal Navigation */}
+      <HorizontalNavigation
+        sections={sections}
+        currentSection={currentSection}
+        scrollProgress={scrollProgress}
+        onSectionClick={scrollToSection}
+      />
+
+      {/* Horizontal Scroll Container */}
+      <HorizontalScrollContainer containerRef={containerRef}>
+        
+        {/* Section 1: NOISE/CHAOS - Hero Introduction */}
+        <ScrollSectionComponent id="noise" chaosLevel={1.0}>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.3 }}
+            className="text-center text-white max-w-4xl"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Featured Work
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              A selection of projects that showcase my passion for creating meaningful digital experiences.
-            </p>
+            <motion.h1 
+              initial={{ opacity: 0, y: -30 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 0.5, duration: 1.0 }}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8"
+              style={{
+                textShadow: '0 0 20px rgba(239, 68, 68, 0.5)',
+                transform: `rotate(${Math.sin(Date.now() * 0.001) * 2}deg)`
+              }}
+            >
+              DREW
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 0.8, duration: 1.0 }}
+              className="mb-8 text-xl md:text-3xl font-light"
+            >
+              From <span className="text-red-300 font-bold">CHAOS</span> to <span className="text-blue-300 font-bold">CLARITY</span>
+            </motion.p>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 1.1, duration: 1.0 }}
+              className="mb-12 text-lg text-white/80 max-w-2xl mx-auto"
+            >
+              I transform complex problems into elegant solutions, filtering signal from noise in the digital landscape.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.4, duration: 0.8 }}
+              className="text-white/60 text-sm"
+            >
+              Scroll right to discover the signal →
+            </motion.div>
           </motion.div>
-          
-          <div className="text-center">
+        </ScrollSectionComponent>
+
+        {/* Section 2: FILTERING - Skills & Approach */}
+        <ScrollSectionComponent id="filtering" chaosLevel={0.6}>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.0 }}
+            viewport={{ once: true }}
+            className="text-center text-white max-w-5xl"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-purple-200">
+              FILTERING THE NOISE
+            </h2>
+            
+            <p className="text-xl mb-12 text-white/90 max-w-3xl mx-auto">
+              Through careful analysis and modern development practices, I separate meaningful patterns from digital chaos.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              {[
+                {
+                  title: "Frontend Mastery",
+                  description: "React, TypeScript, and modern frameworks",
+                  icon: "⚛️",
+                  chaos: 0.7
+                },
+                {
+                  title: "System Architecture",
+                  description: "Scalable, maintainable code structures",
+                  icon: "🏗️",
+                  chaos: 0.5
+                },
+                {
+                  title: "User Experience",
+                  description: "Intuitive, accessible interfaces",
+                  icon: "✨",
+                  chaos: 0.3
+                }
+              ].map((skill, index) => (
+                <motion.div
+                  key={skill.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20"
+                >
+                  <div className="text-4xl mb-4">{skill.icon}</div>
+                  <h3 className="text-xl font-semibold mb-3 text-purple-200">
+                    {skill.title}
+                  </h3>
+                  <p className="text-white/80">
+                    {skill.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </ScrollSectionComponent>
+
+        {/* Section 3: ORGANIZING - Featured Work */}
+        <ScrollSectionComponent id="organizing" chaosLevel={0.3}>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.0 }}
+            viewport={{ once: true }}
+            className="text-center text-white max-w-5xl"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-blue-200">
+              ORGANIZING SOLUTIONS
+            </h2>
+            
+            <p className="text-xl mb-12 text-white/90 max-w-3xl mx-auto">
+              Structured approaches to complex challenges, bringing order to digital experiences.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              {[
+                {
+                  title: "E-Commerce Platform",
+                  description: "Full-stack solution with React, Node.js, and PostgreSQL",
+                  tags: ["React", "Node.js", "PostgreSQL"],
+                  link: "/projects"
+                },
+                {
+                  title: "Data Visualization",
+                  description: "Interactive dashboards with D3.js and real-time updates",
+                  tags: ["D3.js", "WebSocket", "Python"],
+                  link: "/projects"
+                }
+              ].map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.3 }}
+                  viewport={{ once: true }}
+                  className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 hover:bg-white/15 transition-all duration-300"
+                >
+                  <h3 className="text-2xl font-semibold mb-4 text-blue-200">
+                    {project.title}
+                  </h3>
+                  <p className="text-white/80 mb-4">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 bg-blue-500/30 text-blue-200 rounded-full text-sm"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <Link
+                    to={project.link}
+                    className="inline-flex items-center text-blue-300 hover:text-blue-200 transition-colors"
+                  >
+                    View Details →
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+
             <Link 
               to="/projects" 
-              className="btn-primary text-lg"
+              className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
             >
               Explore All Projects
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Preview */}
-      <section className="section-padding bg-white dark:bg-gray-900">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              What I Do
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
-              I specialize in modern web development with a focus on user experience and accessibility.
-            </p>
           </motion.div>
+        </ScrollSectionComponent>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Frontend Development",
-                description: "Creating responsive, accessible user interfaces with React, TypeScript, and modern CSS.",
-                icon: "🎨"
-              },
-              {
-                title: "Full-Stack Solutions",
-                description: "Building complete web applications with robust backends and seamless integrations.",
-                icon: "⚡"
-              },
-              {
-                title: "User Experience",
-                description: "Designing intuitive interfaces that prioritize usability and accessibility for all users.",
-                icon: "👥"
-              }
-            ].map((skill, index) => (
+        {/* Section 4: PURE SIGNAL - Contact & Call to Action */}
+        <ScrollSectionComponent id="signal" chaosLevel={0.0}>
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1.0 }}
+            viewport={{ once: true }}
+            className="text-center text-white max-w-4xl"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-cyan-200">
+              PURE SIGNAL
+            </h2>
+            
+            <p className="text-xl mb-12 text-white/90 max-w-2xl mx-auto">
+              Clear communication. Precise execution. Let's create something meaningful together.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
               <motion.div
-                key={skill.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="text-center p-6"
+                className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20"
               >
-                <div className="text-4xl mb-4">{skill.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  {skill.title}
+                <h3 className="text-2xl font-semibold mb-4 text-cyan-200">
+                  Ready to Build?
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {skill.description}
+                <p className="text-white/80 mb-6">
+                  Transform your ideas into elegant digital solutions with modern web technologies.
                 </p>
+                <Link 
+                  to="/contact" 
+                  className="inline-block bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+                >
+                  Start a Project
+                </Link>
               </motion.div>
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <Link 
-              to="/about" 
-              className="btn-secondary"
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20"
+              >
+                <h3 className="text-2xl font-semibold mb-4 text-cyan-200">
+                  Let's Connect
+                </h3>
+                <p className="text-white/80 mb-6">
+                  Discuss opportunities, share ideas, or just say hello. Clear communication starts here.
+                </p>
+                <Link 
+                  to="/about" 
+                  className="inline-block border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200"
+                >
+                  Learn More
+                </Link>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1.0, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="text-cyan-300/60 text-sm"
             >
-              Learn More About Me
-            </Link>
-          </div>
-        </div>
-      </section>
+              Signal achieved. Message clear.
+            </motion.div>
+          </motion.div>
+        </ScrollSectionComponent>
+
+      </HorizontalScrollContainer>
     </div>
   );
 };
