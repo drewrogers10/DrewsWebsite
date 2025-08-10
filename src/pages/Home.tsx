@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import WaveformAnimation from "../components/WaveformAnimation";
 
 const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white px-4 pt-16">
+      <section className="min-h-screen flex flex-col items-center justify-center text-center bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white px-4 pt-16 relative overflow-hidden">
+        <WaveformAnimation />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -18,7 +20,7 @@ const Home = () => {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
           >
-            Hi, I'm <span className="text-accent">Drew</span>
+            Hi, I'm <span className="text-gray-300">Drew</span>
           </motion.h1>
           
           <motion.p 

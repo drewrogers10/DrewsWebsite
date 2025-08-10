@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import SignalToNoiseAnimation from "../components/SignalToNoiseAnimation";
 
 const About = () => {
   const skills = [
@@ -33,7 +34,8 @@ const About = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header Section */}
-      <section className="section-padding bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white">
+      <section className="section-padding bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white relative overflow-hidden">
+        <SignalToNoiseAnimation />
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -52,7 +54,7 @@ const About = () => {
       </section>
 
       {/* Bio Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-gray-900">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -72,10 +74,10 @@ const About = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 Hi, I'm Drew
               </h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+              <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
                 <p>
                   I'm a passionate full-stack developer with over 5 years of experience creating 
                   digital solutions that combine beautiful design with robust functionality. My 
@@ -99,7 +101,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-gray-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -108,10 +110,10 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               My Values & Approach
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               These principles guide every project I work on and every line of code I write.
             </p>
           </motion.div>
@@ -124,7 +126,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
+                className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="flex items-start">
                   <div className="text-3xl mr-4 flex-shrink-0">
@@ -146,7 +148,7 @@ const About = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-gray-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -155,10 +157,10 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               Skills & Technologies
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               A comprehensive toolkit for building modern web applications from concept to deployment.
             </p>
           </motion.div>
@@ -173,14 +175,14 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
                   {skillGroup.category}
                 </h3>
                 <div className="flex flex-wrap justify-center gap-2">
                   {skillGroup.items.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-accent hover:text-primary transition-colors duration-200"
+                      className="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-accent hover:text-primary transition-colors duration-200"
                     >
                       {skill}
                     </span>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import SignalToNoiseAnimation from "../components/SignalToNoiseAnimation";
 
 interface FormData {
   name: string;
@@ -82,7 +83,8 @@ const Contact = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header Section */}
-      <section className="section-padding bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white">
+      <section className="section-padding bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white relative overflow-hidden">
+        <SignalToNoiseAnimation />
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -101,7 +103,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-gray-900">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -109,9 +111,9 @@ const Contact = () => {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-lg shadow-md p-8"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 Send me a message
               </h2>
               
@@ -129,7 +131,7 @@ const Contact = () => {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Name *
                   </label>
                   <input
@@ -139,13 +141,13 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                     placeholder="Your full name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Email *
                   </label>
                   <input
@@ -155,13 +157,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                     placeholder="your.email@example.com"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Message *
                   </label>
                   <textarea
@@ -170,8 +172,8 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent resize-vertical"
+                    rows={10}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-vertical"
                     placeholder="Tell me about your project or how I can help..."
                   />
                 </div>
@@ -194,10 +196,10 @@ const Contact = () => {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                   Let's connect
                 </h2>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                   I'm always open to discussing new opportunities, interesting projects, 
                   or just having a chat about technology and development. Feel free to 
                   reach out through any of the channels below.
@@ -211,16 +213,16 @@ const Contact = () => {
                     href={method.href}
                     target={method.href.startsWith('http') ? '_blank' : undefined}
                     rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 group"
+                    className="flex items-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 group"
                   >
                     <div className="text-accent group-hover:text-primary transition-colors mr-4">
                       {method.icon}
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-900 group-hover:text-primary transition-colors">
+                      <h3 className="font-medium text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors">
                         {method.title}
                       </h3>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
                         {method.value}
                       </p>
                     </div>
@@ -228,11 +230,11 @@ const Contact = () => {
                 ))}
               </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="font-semibold text-gray-900 mb-3">
+              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">
                   Response Time
                 </h3>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
                   I typically respond to messages within 24-48 hours. For urgent 
                   matters, please mention it in your message subject or reach out 
                   via email directly.
@@ -244,7 +246,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-white dark:bg-gray-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -253,7 +255,7 @@ const Contact = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               Frequently Asked Questions
             </h2>
           </motion.div>
@@ -279,12 +281,12 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gray-50 rounded-lg p-6"
+                className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6"
               >
-                <h3 className="font-semibold text-gray-900 mb-2">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   {faq.question}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   {faq.answer}
                 </p>
               </motion.div>

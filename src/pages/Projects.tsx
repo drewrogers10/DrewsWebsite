@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import ProjectCard from "../components/ProjectCard";
 import projectsData from "../content/projects.json";
+import SignalToNoiseAnimation from "../components/SignalToNoiseAnimation";
 
 const Projects = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header Section */}
-      <section className="section-padding bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white">
+      <section className="bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white py-20 relative overflow-hidden">
+        <SignalToNoiseAnimation />
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -26,7 +28,7 @@ const Projects = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-gray-50 dark:bg-gray-900">
         <div className="container">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projectsData.map((project, index) => (

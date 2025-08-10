@@ -13,7 +13,7 @@
   
   /* Focus styles for accessibility */
   *:focus {
-    outline: 2px solid #fdbb2d;
+    outline: 2px solid #6b7280;
     outline-offset: 2px;
   }
   
@@ -38,15 +38,15 @@
 
 
   .btn-primary {
-    @apply bg-accent text-primary px-6 py-3 rounded-md font-semibold hover:bg-yellow-400 transition-colors duration-200 focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-gray-900;
+    @apply bg-gray-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-gray-600 transition-colors duration-200 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 dark:bg-gray-600 dark:hover:bg-gray-500;
   }
   
   .btn-secondary {
-    @apply border-2 border-accent text-accent px-6 py-3 rounded-md font-semibold hover:bg-accent hover:text-primary transition-all duration-200 dark:hover:text-gray-900;
+    @apply border-2 border-gray-400 text-gray-400 px-6 py-3 rounded-md font-semibold hover:bg-gray-400 hover:text-white transition-all duration-200 dark:border-gray-500 dark:text-gray-300 dark:hover:bg-gray-500 dark:hover:text-white;
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-gray-200 dark:border-gray-700;
   }
   
   .section-padding {
