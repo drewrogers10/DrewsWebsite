@@ -50,11 +50,9 @@ export const useHorizontalScroll = (sections: ScrollSection[]) => {
     if (!container) return;
 
     let scrollTimeout: number;
-    let isUserScrolling = false;
 
     const handleScroll = () => {
       setIsScrolling(true);
-      isUserScrolling = true;
       updateScrollState();
 
       // Clear existing timeout
@@ -63,7 +61,6 @@ export const useHorizontalScroll = (sections: ScrollSection[]) => {
       // Set scrolling to false after scroll ends
       scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
-        isUserScrolling = false;
         
         // Auto-snap to nearest section after user stops scrolling
         const container = containerRef.current;

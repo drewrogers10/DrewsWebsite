@@ -51,14 +51,12 @@ interface ScrollSectionProps {
   children: React.ReactNode;
   id: string;
   className?: string;
-  chaosLevel: number;
 }
 
 export const ScrollSection: React.FC<ScrollSectionProps> = ({
   children,
   id,
-  className = '',
-  chaosLevel
+  className = ''
 }) => {
   // Use neutral background to let dynamic filter show through
   const getBackgroundGradient = () => {
