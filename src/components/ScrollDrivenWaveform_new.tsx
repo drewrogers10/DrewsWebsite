@@ -84,8 +84,12 @@ const ScrollDrivenWaveform: React.FC<ScrollDrivenWaveformProps> = ({
           y += Math.sin(x * frequency * 40 - flowSpeed * 2.8) * baseAmplitude * 0.2 * chaosLevel;
         }
         
-        // PURE SIGNAL STATE - when chaosLevel is very low, use only the base sine wave
-        // No additional harmonics or enhancements for a clean, pure sine wave
+        // SIGNAL ENHANCEMENT - cleaner waves as chaos decreases
+        const signalLevel = 1 - chaosLevel;
+        if (signalLevel > 0) {
+          y += Math.sin(x * frequency * 2 - flowSpeed) * baseAmplitude * 0.3 * signalLevel;
+          y += Math.sin(x * frequency * 0.5 - flowSpeed * 0.5) * baseAmplitude * 0.2 * signalLevel;
+        }
         
         // COLOR TRANSITION based on horizontal position and chaos
         const easedTransition = 1 - Math.pow(1 - transitionFactor, 3);

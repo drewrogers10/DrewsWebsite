@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import { useHorizontalScroll, ScrollSection } from "../hooks/useHorizontalScroll";
 import HorizontalScrollContainer, { ScrollSection as ScrollSectionComponent } from "../components/HorizontalScrollContainer";
 import ScrollDrivenWaveform from "../components/ScrollDrivenWaveform";
-import HorizontalNavigation from "../components/HorizontalNavigation";
+
 import DynamicBackgroundFilter from "../components/DynamicBackgroundFilter";
+
+import { TransitionButton } from "../components/TransitionWrapper";
 
 const Home = () => {
   // Define the sections for horizontal scrolling
   const sections: ScrollSection[] = [
-    { id: 'noise', title: 'CHAOS', chaosLevel: 1.0, colorTheme: 'noise' },
+    { id: 'chaos', title: 'CHAOS', chaosLevel: 1.0, colorTheme: 'noise' },
     { id: 'filtering', title: 'FILTERING', chaosLevel: 0.6, colorTheme: 'transition' },
     { id: 'organizing', title: 'ORGANIZING', chaosLevel: 0.3, colorTheme: 'signal' },
     { id: 'signal', title: 'SIGNAL', chaosLevel: 0.0, colorTheme: 'pure' }
@@ -18,11 +20,11 @@ const Home = () => {
   const {
     containerRef,
     scrollProgress,
-    currentSection,
     isScrolling,
-    scrollToSection,
     getChaosLevel
   } = useHorizontalScroll(sections);
+
+
 
   return (
     <div className="min-h-screen relative">
@@ -40,13 +42,7 @@ const Home = () => {
         className="fixed inset-0"
       />
 
-      {/* Horizontal Navigation */}
-      <HorizontalNavigation
-        sections={sections}
-        currentSection={currentSection}
-        scrollProgress={scrollProgress}
-        onSectionClick={scrollToSection}
-      />
+
 
       {/* Horizontal Scroll Container */}
       <HorizontalScrollContainer containerRef={containerRef}>
@@ -54,10 +50,17 @@ const Home = () => {
         {/* Section 1: NOISE/CHAOS - Hero Introduction */}
         <ScrollSectionComponent id="chaos">
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.3 }}
-            className="text-center text-white max-w-4xl"
+            initial={{ opacity: 0, scale: 0.8, y: 50 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: -50 }}
+            transition={{ 
+              duration: 1.2, 
+              delay: 0.3,
+              type: "spring",
+              stiffness: 100,
+              damping: 20
+            }}
+            className="text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 lg:p-10 border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20"
           >
             <motion.h1 
               initial={{ opacity: 0, y: -30 }} 
@@ -108,7 +111,7 @@ const Home = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.0 }}
             viewport={{ once: true }}
-            className="text-center text-white max-w-5xl"
+            className="text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 lg:p-10 border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-8 text-purple-200">
               FILTERING THE NOISE
@@ -167,7 +170,8 @@ const Home = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.0 }}
             viewport={{ once: true }}
-            className="text-center text-white max-w-5xl"
+            className="text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 lg:p-10 border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20"
+            data-transition-source="organizing-panel"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-8 text-blue-200">
               ORGANIZING SOLUTIONS
@@ -226,12 +230,16 @@ const Home = () => {
               ))}
             </div>
 
-            <Link 
-              to="/projects" 
+            <TransitionButton
+              transition={{ 
+                route: '/projects', 
+                sourceSelector: '[data-transition-source="organizing-panel"]',
+                type: 'expand'
+              }}
               className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
             >
               Explore All Projects
-            </Link>
+            </TransitionButton>
           </motion.div>
         </ScrollSectionComponent>
 
@@ -242,7 +250,7 @@ const Home = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.0 }}
             viewport={{ once: true }}
-            className="text-center text-white max-w-4xl"
+            className="text-center text-white max-w-4xl bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-8 text-cyan-200">
               PURE SIGNAL
