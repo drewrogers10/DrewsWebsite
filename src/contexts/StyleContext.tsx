@@ -4,7 +4,6 @@ import {
   ThemeName, 
   AVAILABLE_THEMES, 
   ACTIVE_THEME, 
-  getActiveStyleTheme,
   getComponentStyles,
   getGlassStyles,
   generateCSSCustomProperties
