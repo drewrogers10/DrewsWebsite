@@ -188,7 +188,9 @@ export const getActiveTheme = (): TransitionTheme => {
   
   // If no style overrides are provided, use the current StyleConfig glass effect
   if (!transitionTheme.styleOverrides) {
-    const glassStyles = getGlassStyles('light');
+    // Respect current dark mode preference
+    const isDark = typeof document !== 'undefined' && document.documentElement.classList.contains('dark');
+    const glassStyles = getGlassStyles(isDark ? 'dark' : 'light');
     return {
       ...transitionTheme,
       styleOverrides: {
@@ -220,7 +222,9 @@ export const createCustomTransitionTheme = (
   overrides: Partial<TransitionTheme>
 ): TransitionTheme => {
   const base = TRANSITION_THEMES[baseTheme];
-  const glassStyles = getGlassStyles('light');
+  // Respect current dark mode preference
+  const isDark = typeof document !== 'undefined' && document.documentElement.classList.contains('dark');
+  const glassStyles = getGlassStyles(isDark ? 'dark' : 'light');
   
   // Merge with StyleConfig if no styleOverrides in base theme
   const baseWithStyles = !base.styleOverrides ? {

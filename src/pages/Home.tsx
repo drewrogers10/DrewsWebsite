@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useHorizontalScroll, ScrollSection } from "../hooks/useHorizontalScroll";
-import HorizontalScrollContainer, { ScrollSection as ScrollSectionComponent } from "../components/HorizontalScrollContainer";
+import { useVerticalScroll, ScrollSection } from "../hooks/useVerticalScroll";
+import VerticalScrollContainer, { ScrollSection as ScrollSectionComponent } from "../components/VerticalScrollContainer";
 import ScrollDrivenWaveform from "../components/ScrollDrivenWaveform";
 
 import DynamicBackgroundFilter from "../components/DynamicBackgroundFilter";
@@ -22,7 +22,7 @@ const Home = () => {
     scrollProgress,
     isScrolling,
     getChaosLevel
-  } = useHorizontalScroll(sections);
+  } = useVerticalScroll(sections);
 
 
 
@@ -44,8 +44,8 @@ const Home = () => {
 
 
 
-      {/* Horizontal Scroll Container */}
-      <HorizontalScrollContainer containerRef={containerRef}>
+      {/* Vertical Scroll Container */}
+      <VerticalScrollContainer containerRef={containerRef}>
         
         {/* Section 1: NOISE/CHAOS - Hero Introduction */}
         <ScrollSectionComponent id="chaos">
@@ -99,7 +99,7 @@ const Home = () => {
               transition={{ delay: 1.4, duration: 0.8 }}
               className="text-white/60 text-sm"
             >
-              Scroll right to discover the signal →
+              Scroll down to discover the signal ↓
             </motion.div>
           </motion.div>
         </ScrollSectionComponent>
@@ -107,8 +107,8 @@ const Home = () => {
         {/* Section 2: FILTERING - Skills & Approach */}
         <ScrollSectionComponent id="filtering">
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0 }}
             viewport={{ once: true }}
             className="text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 lg:p-10 border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20"
@@ -166,8 +166,8 @@ const Home = () => {
         {/* Section 3: ORGANIZING - Featured Work */}
         <ScrollSectionComponent id="organizing">
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0 }}
             viewport={{ once: true }}
             className="text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 lg:p-10 border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20"
@@ -246,8 +246,8 @@ const Home = () => {
         {/* Section 4: PURE SIGNAL - Contact & Call to Action */}
         <ScrollSectionComponent id="signal">
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0 }}
             viewport={{ once: true }}
             className="text-center text-white max-w-4xl bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10"
@@ -316,7 +316,7 @@ const Home = () => {
           </motion.div>
         </ScrollSectionComponent>
 
-      </HorizontalScrollContainer>
+      </VerticalScrollContainer>
     </div>
   );
 };

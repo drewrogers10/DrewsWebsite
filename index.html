@@ -7,6 +7,25 @@
     <meta name="description" content="Drew's Portfolio - Building elegant solutions with code. Showcasing projects, skills, and insights." />
     <meta name="keywords" content="Drew, Portfolio, Developer, React, TypeScript, Web Development" />
     <meta name="author" content="Drew" />
+    <script>
+      (function() {
+        try {
+          var ls = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var shouldUseDark = (ls === 'dark') || (!ls && prefersDark);
+          if (shouldUseDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {
+          // If anything fails, fall back to prefers-color-scheme
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+          }
+        }
+      })();
+    </script>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
