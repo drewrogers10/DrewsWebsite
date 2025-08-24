@@ -109,30 +109,6 @@ const ScrollDrivenWaveform: React.FC<ScrollDrivenWaveformProps> = ({
       
       ctx.stroke();
       
-      // DYNAMIC LABELS based on chaos level
-      ctx.font = '16px Arial';
-      ctx.textBaseline = 'middle';
-      
-      // Left side - intensity based on chaos
-      if (chaosLevel > 0.5) {
-        ctx.textAlign = 'left';
-        ctx.fillStyle = `rgba(239, 68, 68, ${0.6 + chaosLevel * 0.4})`;
-        ctx.fillText('NOISE', 40, centerY - baseAmplitude - 40);
-      }
-      
-      // Right side - clarity based on signal strength
-      if (chaosLevel < 0.5) {
-        ctx.textAlign = 'right';
-        ctx.fillStyle = `rgba(59, 130, 246, ${0.6 + (1 - chaosLevel) * 0.4})`;
-        ctx.fillText('SIGNAL', canvas.width - 40, centerY - baseAmplitude - 40);
-      }
-
-      // Center transition label
-      if (chaosLevel > 0.3 && chaosLevel < 0.7) {
-        ctx.textAlign = 'center';
-        ctx.fillStyle = `rgba(147, 51, 234, 0.8)`;
-        ctx.fillText('FILTERING', canvas.width / 2, centerY - baseAmplitude - 40);
-      }
 
       animationRef.current = requestAnimationFrame(animate);
     };

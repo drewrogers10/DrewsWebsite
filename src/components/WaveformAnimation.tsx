@@ -111,18 +111,6 @@ const WaveformAnimation: React.FC = () => {
         ctx.stroke();
       }
 
-      // LABELS - Add text labels to identify noise and signal regions
-      ctx.font = 'bold 18px Inter, sans-serif';  // TWEAK: Font size and family
-      
-      // Left side label (NOISE)
-      ctx.textAlign = 'left';
-      ctx.fillStyle = 'rgba(239, 68, 68, 0.8)';  // TWEAK: Red color with transparency
-      ctx.fillText('NOISE', 40, centerY - baseAmplitude - 30);  // TWEAK: Position (40px from left, 30px above wave)
-      
-      // Right side label (SIGNAL)
-      ctx.textAlign = 'right';
-      ctx.fillStyle = 'rgba(59, 130, 246, 0.9)';  // TWEAK: Blue color with transparency
-      ctx.fillText('SIGNAL', canvas.width - 40, centerY - baseAmplitude - 30);  // TWEAK: Position (40px from right)
 
       animationRef.current = requestAnimationFrame(animate);
     };

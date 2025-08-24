@@ -1,29 +1,29 @@
 [
   {
-    "title": "Building Accessible React Components",
-    "slug": "accessible-react-components",
-    "date": "2024-01-15",
-    "summary": "A comprehensive guide to creating React components that work for everyone, including users with disabilities.",
-    "content": "Accessibility should be a fundamental consideration in every React component we build. In this post, I'll share practical techniques for creating inclusive user interfaces that work for everyone...",
-    "tags": ["React", "Accessibility", "Web Development", "UX"],
-    "readTime": "8 min read"
+    "title": "AI Evals That Let You Deploy Features When They Are Viable",
+    "slug": "ai-evals-deployment-strategy",
+    "date": "2024-08-20",
+    "summary": "How to implement robust AI evaluation frameworks that give you confidence to ship AI-powered features to production.",
+    "content": "Deploying AI features requires a fundamentally different approach to testing and validation. Traditional unit tests aren't enough when dealing with probabilistic outputs and emergent behaviors. In this post, I'll explore how to build comprehensive evaluation systems that measure AI performance across multiple dimensions - accuracy, safety, latency, and user experience. We'll cover techniques like adversarial testing, benchmark suites, human-in-the-loop validation, and continuous monitoring that enable teams to ship AI features with confidence while maintaining quality standards...",
+    "tags": ["AI", "Machine Learning", "Testing", "DevOps", "Production"],
+    "readTime": "10 min read"
   },
   {
-    "title": "TypeScript Best Practices for Large Applications",
-    "slug": "typescript-best-practices",
-    "date": "2024-01-08",
-    "summary": "Lessons learned from building and maintaining large-scale TypeScript applications in production.",
-    "content": "As applications grow in complexity, TypeScript becomes increasingly valuable for maintaining code quality and developer productivity. Here are the patterns and practices I've found most effective...",
-    "tags": ["TypeScript", "Software Architecture", "Best Practices"],
+    "title": "Low Code Platforms vs AI Code Tools: The Developer's Dilemma",
+    "slug": "lowcode-vs-ai-tools",
+    "date": "2024-08-15",
+    "summary": "Comparing the strengths and limitations of low-code platforms against AI-powered coding assistants for modern development.",
+    "content": "The development landscape is rapidly evolving with two major trends: low-code/no-code platforms promising to democratize software creation, and AI coding tools that augment developer productivity. But which approach delivers better results? In this analysis, I'll compare platforms like Bubble, Webflow, and OutSystems against AI tools like GitHub Copilot, Cursor, and Claude. We'll examine factors like development speed, code quality, maintainability, scalability, and total cost of ownership. The answer isn't black and white - each approach has distinct advantages depending on your project requirements, team expertise, and long-term goals...",
+    "tags": ["Low Code", "AI Tools", "Developer Productivity", "Software Architecture"],
     "readTime": "12 min read"
   },
   {
-    "title": "The Art of Code Reviews",
-    "slug": "art-of-code-reviews",
-    "date": "2024-01-01",
-    "summary": "How to give and receive constructive feedback that improves code quality and team collaboration.",
-    "content": "Code reviews are one of the most important practices in software development, yet they're often done poorly. Here's how to make them more effective and enjoyable for everyone involved...",
-    "tags": ["Code Review", "Team Collaboration", "Software Development"],
-    "readTime": "6 min read"
+    "title": "On-Premise AI vs Cloud LLMs: Making the Right Choice",
+    "slug": "onprem-ai-vs-cloud-llms",
+    "date": "2024-08-10",
+    "summary": "A comprehensive comparison of self-hosted AI models versus cloud-based LLM services for enterprise applications.",
+    "content": "As AI becomes central to business operations, organizations face a critical decision: deploy models on-premise or rely on cloud-based LLM services? This choice impacts everything from data privacy and compliance to cost structure and performance. In this deep dive, I'll analyze the trade-offs between running models like Llama, Mistral, or custom fine-tuned models on your own infrastructure versus using OpenAI, Anthropic, or Google's APIs. We'll cover security considerations, latency requirements, cost modeling, scalability challenges, and maintenance overhead. I'll also share real-world case studies and provide a decision framework to help you choose the right approach for your specific use case...",
+    "tags": ["AI Infrastructure", "Cloud Computing", "Enterprise AI", "Security", "Cost Optimization"],
+    "readTime": "15 min read"
   }
 ]
