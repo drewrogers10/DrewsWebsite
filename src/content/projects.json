@@ -4,7 +4,7 @@
     "slug": "solomon-assistant",
     "summary": "An intelligent personal AI assistant that autonomously manages tasks, schedules, and workflows with advanced reasoning capabilities.",
     "description": "Solomon is a sophisticated personal agentic assistant that leverages advanced AI to understand context, make decisions, and execute complex workflows autonomously. Built with cutting-edge language models and reasoning frameworks, Solomon can handle everything from calendar management to complex research tasks while learning from user preferences and behaviors.",
-    "tech": ["Python", "LangChain", "OpenAI GPT-4", "FastAPI", "PostgreSQL", "React", "TypeScript"],
+    "tech": ["Python", "Agno", "OpenAI GPT-5", "FastAPI", "PostgreSQL", "React", "TypeScript"],
     "images": ["/images/solomon-1.png", "/images/solomon-2.png"],
     "github": "https://github.com/drewrogers10/solomon-assistant",
     "demo": "https://solomon-demo.vercel.app",
