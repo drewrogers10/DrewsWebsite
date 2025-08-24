@@ -1,7 +1,11 @@
-import { motion } from "framer-motion";
-import SignalToNoiseAnimation from "../components/SignalToNoiseAnimation";
+import React from 'react';
+import { motion } from 'framer-motion';
+import SignalToNoiseAnimation from '../components/SignalToNoiseAnimation';
+import { useMobileDetection } from '../hooks/useMobileDetection';
 
 const About = () => {
+  const { isMobile } = useMobileDetection();
+  
   const skills = [
     { category: "Frontend", items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"] },
     { category: "Backend", items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST APIs"] },
@@ -55,8 +59,8 @@ const About = () => {
 
       {/* Bio Section */}
       <section className="section-padding bg-white dark:bg-gray-900">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className={`container ${isMobile ? 'px-4' : ''}`}>
+          <div className={`grid gap-12 items-center ${isMobile ? 'grid-cols-1' : 'lg:grid-cols-2'}`}>
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -65,7 +69,7 @@ const About = () => {
               <img
                 src="/api/placeholder/400/500"
                 alt="Drew - Portfolio photo"
-                className="rounded-lg shadow-lg w-full max-w-md mx-auto"
+                className={`rounded-none shadow-lg w-full mx-auto ${isMobile ? 'max-w-sm' : 'max-w-md'}`}
               />
             </motion.div>
             
@@ -74,7 +78,7 @@ const About = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+              <h2 className={`font-bold text-gray-900 dark:text-gray-100 mb-6 ${isMobile ? 'text-2xl text-center' : 'text-3xl'}`}>
                 Hi, I'm Drew
               </h2>
               <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -118,7 +122,7 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : 'md:grid-cols-2'}`}>
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
@@ -126,7 +130,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
+                className={`bg-white dark:bg-gray-800 rounded-none shadow-md hover:shadow-lg transition-shadow duration-300 ${isMobile ? 'p-4' : 'p-6'}`}
               >
                 <div className="flex items-start">
                   <div className="text-3xl mr-4 flex-shrink-0">
@@ -165,7 +169,7 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : 'md:grid-cols-3'}`}>
             {skills.map((skillGroup, index) => (
               <motion.div
                 key={skillGroup.category}
@@ -175,14 +179,16 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                <h3 className={`font-semibold text-gray-900 dark:text-gray-100 mb-4 ${isMobile ? 'text-lg' : 'text-xl'}`}>
                   {skillGroup.category}
                 </h3>
                 <div className="flex flex-wrap justify-center gap-2">
                   {skillGroup.items.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-accent hover:text-primary transition-colors duration-200"
+                      className={`bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-none hover:bg-accent hover:text-primary transition-colors duration-200 ${
+                        isMobile ? 'px-2 py-1 text-xs' : 'px-3 py-2 text-sm'
+                      }`}
                     >
                       {skill}
                     </span>

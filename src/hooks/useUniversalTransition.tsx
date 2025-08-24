@@ -40,7 +40,6 @@ export const useUniversalTransition = () => {
         sourceElement = target.closest('[data-transition-source]') as HTMLElement ||
                        target.closest('.bg-white\\/5') as HTMLElement ||
                        target.closest('.backdrop-blur-md') as HTMLElement ||
-                       target.closest('.rounded-2xl') as HTMLElement ||
                        target.closest('.max-w-5xl') as HTMLElement ||
                        target.closest('.border') as HTMLElement ||
                        target.closest('section') as HTMLElement ||

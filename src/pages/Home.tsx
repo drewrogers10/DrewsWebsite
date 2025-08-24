@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { useVerticalScroll, ScrollSection } from "../hooks/useVerticalScroll";
 import VerticalScrollContainer, { ScrollSection as ScrollSectionComponent } from "../components/VerticalScrollContainer";
 import ScrollDrivenWaveform from "../components/ScrollDrivenWaveform";
+import { useMobileDetection } from "../hooks/useMobileDetection";
 
 import DynamicBackgroundFilter from "../components/DynamicBackgroundFilter";
 
 import { TransitionButton } from "../components/TransitionWrapper";
 
 const Home = () => {
-  // Define the sections for horizontal scrolling
+  // Define the sections for vertical scrolling
   const sections: ScrollSection[] = [
     { id: 'chaos', title: 'CHAOS', chaosLevel: 1.0, colorTheme: 'noise' },
     { id: 'filtering', title: 'FILTERING', chaosLevel: 0.6, colorTheme: 'transition' },
@@ -23,6 +24,8 @@ const Home = () => {
     isScrolling,
     getChaosLevel
   } = useVerticalScroll(sections);
+
+  const { isMobile, isTablet } = useMobileDetection();
 
 
 
@@ -60,13 +63,17 @@ const Home = () => {
               stiffness: 100,
               damping: 20
             }}
-            className="text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 lg:p-10 border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20"
+            className={`text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-none border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20 ${
+              isMobile ? 'p-4 mx-4' : 'p-6 md:p-8 lg:p-10'
+            }`}
           >
             <motion.h1 
               initial={{ opacity: 0, y: -30 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ delay: 0.5, duration: 1.0 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8"
+              className={`font-bold mb-8 ${
+                isMobile ? 'text-4xl' : 'text-5xl md:text-7xl lg:text-8xl'
+              }`}
               style={{
                 textShadow: '0 0 20px rgba(239, 68, 68, 0.5)',
                 transform: `rotate(${Math.sin(Date.now() * 0.001) * 2}deg)`
@@ -79,7 +86,9 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ delay: 0.8, duration: 1.0 }}
-              className="mb-8 text-xl md:text-3xl font-light"
+              className={`mb-8 font-light ${
+                isMobile ? 'text-lg' : 'text-xl md:text-3xl'
+              }`}
             >
               From <span className="text-red-300 font-bold">CHAOS</span> to <span className="text-blue-300 font-bold">CLARITY</span>
             </motion.p>
@@ -88,7 +97,9 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ delay: 1.1, duration: 1.0 }}
-              className="mb-12 text-lg text-white/80 max-w-2xl mx-auto"
+              className={`mb-12 text-white/80 max-w-2xl mx-auto ${
+                isMobile ? 'text-base px-2' : 'text-lg'
+              }`}
             >
               I transform complex problems into elegant solutions, filtering signal from noise in the digital landscape.
             </motion.p>
@@ -111,17 +122,25 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0 }}
             viewport={{ once: true }}
-            className="text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 lg:p-10 border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20"
+            className={`text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-none border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20 ${
+              isMobile ? 'p-4 mx-4' : 'p-6 md:p-8 lg:p-10'
+            }`}
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-purple-200">
+            <h2 className={`font-bold mb-8 text-purple-200 ${
+              isMobile ? 'text-3xl' : 'text-4xl md:text-6xl'
+            }`}>
               FILTERING THE NOISE
             </h2>
             
-            <p className="text-xl mb-12 text-white/90 max-w-3xl mx-auto">
+            <p className={`mb-12 text-white/90 max-w-3xl mx-auto ${
+              isMobile ? 'text-base px-2' : 'text-xl'
+            }`}>
               Through careful analysis and modern development practices, I separate meaningful patterns from digital chaos.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className={`grid gap-8 mb-12 ${
+              isMobile ? 'grid-cols-1' : 'md:grid-cols-3'
+            }`}>
               {[
                 {
                   title: "Frontend Mastery",
@@ -148,7 +167,7 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20"
+                  className="bg-white/10 backdrop-blur-sm rounded-none p-6 border border-white/20"
                 >
                   <div className="text-4xl mb-4">{skill.icon}</div>
                   <h3 className="text-xl font-semibold mb-3 text-purple-200">
@@ -170,18 +189,26 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0 }}
             viewport={{ once: true }}
-            className="text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 lg:p-10 border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20"
+            className={`text-center text-white w-full max-w-5xl mx-auto bg-white/5 backdrop-blur-md rounded-none border border-white/10 transition-all duration-500 ease-out hover:bg-white/8 hover:border-white/20 ${
+              isMobile ? 'p-4 mx-4' : 'p-6 md:p-8 lg:p-10'
+            }`}
             data-transition-source="organizing-panel"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-blue-200">
+            <h2 className={`font-bold mb-8 text-blue-200 ${
+              isMobile ? 'text-3xl' : 'text-4xl md:text-6xl'
+            }`}>
               ORGANIZING SOLUTIONS
             </h2>
             
-            <p className="text-xl mb-12 text-white/90 max-w-3xl mx-auto">
+            <p className={`mb-12 text-white/90 max-w-3xl mx-auto ${
+              isMobile ? 'text-base px-2' : 'text-xl'
+            }`}>
               Structured approaches to complex challenges, bringing order to digital experiences.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className={`grid gap-8 mb-12 ${
+              isMobile ? 'grid-cols-1' : 'md:grid-cols-2'
+            }`}>
               {[
                 {
                   title: "E-Commerce Platform",
@@ -202,7 +229,7 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.3 }}
                   viewport={{ once: true }}
-                  className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 hover:bg-white/15 transition-all duration-300"
+                  className="bg-white/10 backdrop-blur-sm rounded-none p-6 border border-white/20 hover:bg-white/15 transition-all duration-300"
                 >
                   <h3 className="text-2xl font-semibold mb-4 text-blue-200">
                     {project.title}
@@ -214,7 +241,7 @@ const Home = () => {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 bg-blue-500/30 text-blue-200 rounded-full text-sm"
+                        className="px-3 py-1 bg-blue-500/30 text-blue-200 rounded-none text-sm"
                       >
                         {tag}
                       </span>
@@ -236,7 +263,7 @@ const Home = () => {
                 sourceSelector: '[data-transition-source="organizing-panel"]',
                 type: 'expand'
               }}
-              className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200"
+              className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-none font-semibold transition-colors duration-200"
             >
               Explore All Projects
             </TransitionButton>
@@ -250,23 +277,31 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0 }}
             viewport={{ once: true }}
-            className="text-center text-white max-w-4xl bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10"
+            className={`text-center text-white max-w-4xl bg-white/5 backdrop-blur-md rounded-none border border-white/10 ${
+              isMobile ? 'p-4 mx-4' : 'p-8'
+            }`}
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-cyan-200">
+            <h2 className={`font-bold mb-8 text-cyan-200 ${
+              isMobile ? 'text-3xl' : 'text-4xl md:text-6xl'
+            }`}>
               PURE SIGNAL
             </h2>
             
-            <p className="text-xl mb-12 text-white/90 max-w-2xl mx-auto">
+            <p className={`mb-12 text-white/90 max-w-2xl mx-auto ${
+              isMobile ? 'text-base px-2' : 'text-xl'
+            }`}>
               Clear communication. Precise execution. Let's create something meaningful together.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className={`grid gap-8 mb-12 ${
+              isMobile ? 'grid-cols-1' : 'md:grid-cols-2'
+            }`}>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20"
+                className="bg-white/10 backdrop-blur-sm rounded-none p-8 border border-white/20"
               >
                 <h3 className="text-2xl font-semibold mb-4 text-cyan-200">
                   Ready to Build?
@@ -276,7 +311,7 @@ const Home = () => {
                 </p>
                 <Link 
                   to="/contact" 
-                  className="inline-block bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+                  className="inline-block bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3 rounded-none font-semibold transition-colors duration-200"
                 >
                   Start a Project
                 </Link>
@@ -287,7 +322,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 viewport={{ once: true }}
-                className="bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20"
+                className="bg-white/10 backdrop-blur-sm rounded-none p-8 border border-white/20"
               >
                 <h3 className="text-2xl font-semibold mb-4 text-cyan-200">
                   Let's Connect
@@ -297,7 +332,7 @@ const Home = () => {
                 </p>
                 <Link 
                   to="/about" 
-                  className="inline-block border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200"
+                  className="inline-block border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white px-6 py-3 rounded-none font-semibold transition-all duration-200"
                 >
                   Learn More
                 </Link>

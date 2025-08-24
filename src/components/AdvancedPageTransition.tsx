@@ -200,7 +200,7 @@ const AdvancedPageTransition: React.FC = () => {
                   duration: theme.particles.duration / 1000,
                   ease: "easeOut"
                 }}
-                className="absolute w-2 h-2 bg-blue-300/60 rounded-full"
+                className="absolute w-2 h-2 bg-blue-300/60 rounded-none"
               />
               ))}
             </motion.div>

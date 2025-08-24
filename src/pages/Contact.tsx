@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import SignalToNoiseAnimation from "../components/SignalToNoiseAnimation";
+import { useMobileDetection } from "../hooks/useMobileDetection";
 
 interface FormData {
   name: string;
@@ -16,6 +17,8 @@ interface ContactMethod {
 }
 
 const Contact = () => {
+  const { isMobile } = useMobileDetection();
+  
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -104,27 +107,27 @@ const Contact = () => {
 
       {/* Contact Form & Info */}
       <section className="section-padding bg-gray-50 dark:bg-gray-900">
-        <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12">
+        <div className={`container ${isMobile ? 'px-4' : ''}`}>
+          <div className={`grid gap-12 ${isMobile ? 'grid-cols-1' : 'lg:grid-cols-2'}`}>
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8"
+              className={`bg-white dark:bg-gray-800 rounded-none shadow-md ${isMobile ? 'p-4' : 'p-8'}`}
             >
               <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 Send me a message
               </h2>
               
               {submitStatus === 'success' && (
-                <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
+                <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-none">
                   Thank you for your message! I'll get back to you soon.
                 </div>
               )}
               
               {submitStatus === 'error' && (
-                <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+                <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-none">
                   Sorry, there was an error sending your message. Please try again or email me directly.
                 </div>
               )}
@@ -141,7 +144,9 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                    className={`w-full border border-gray-300 dark:border-gray-600 rounded-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                      isMobile ? 'px-3 py-4 text-base min-h-[44px]' : 'px-4 py-3'
+                    }`}
                     placeholder="Your full name"
                   />
                 </div>
@@ -157,7 +162,12 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                    inputMode="email"
+                    autoCapitalize="none"
+                    autoCorrect="off"
+                    className={`w-full border border-gray-300 dark:border-gray-600 rounded-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                      isMobile ? 'px-3 py-4 text-base min-h-[44px]' : 'px-4 py-3'
+                    }`}
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -172,8 +182,10 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={10}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-vertical"
+                    rows={isMobile ? 6 : 10}
+                    className={`w-full border border-gray-300 dark:border-gray-600 rounded-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-vertical ${
+                      isMobile ? 'px-3 py-4 text-base' : 'px-4 py-3'
+                    }`}
                     placeholder="Tell me about your project or how I can help..."
                   />
                 </div>
@@ -213,7 +225,7 @@ const Contact = () => {
                     href={method.href}
                     target={method.href.startsWith('http') ? '_blank' : undefined}
                     rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex items-center p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 group"
+                    className="flex items-center p-4 bg-white dark:bg-gray-800 rounded-none shadow-md hover:shadow-lg transition-shadow duration-300 group"
                   >
                     <div className="text-accent group-hover:text-primary transition-colors mr-4">
                       {method.icon}
@@ -230,7 +242,7 @@ const Contact = () => {
                 ))}
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-gray-800 rounded-none shadow-md p-6">
                 <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">
                   Response Time
                 </h3>
@@ -281,7 +293,7 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6"
+                className="bg-gray-50 dark:bg-gray-800 rounded-none p-6"
               >
                 <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   {faq.question}

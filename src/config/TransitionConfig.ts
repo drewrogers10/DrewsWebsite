@@ -122,7 +122,7 @@ export const TRANSITION_THEMES = {
  */
 export type TransitionThemeName = keyof typeof TRANSITION_THEMES;
 
-export const ACTIVE_TRANSITION_THEME: TransitionThemeName = 'frostedGlass';
+export const ACTIVE_TRANSITION_THEME: TransitionThemeName = 'sharpEdges';
 
 /**
  * ROUTE CONFIGURATION

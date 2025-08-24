@@ -48,13 +48,13 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           {project.tech.slice(0, 3).map((tech) => (
             <span
               key={tech}
-              className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full"
+              className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-none"
             >
               {tech}
             </span>
           ))}
           {project.tech.length > 3 && (
-            <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-full">
+            <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-none">
               +{project.tech.length - 3} more
             </span>
           )}
@@ -63,7 +63,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         <div className="flex items-center justify-between">
           <Link
             to={`/projects/${project.slug}`}
-            className="text-accent hover:text-primary font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded"
+            className="text-accent hover:text-primary font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded-none"
           >
             Learn more →
           </Link>
