@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import projectsData from '../content/projects.json';
@@ -54,7 +53,7 @@ const ProjectDetails = () => {
       </section>
 
       {/* Project Images */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-gray-900">
         <div className={`container ${isMobile ? 'px-4' : ''}`}>
           <div className={`grid gap-8 mb-12 ${isMobile ? 'grid-cols-1' : 'md:grid-cols-2'}`}>
             {project.images.map((image, index) => (
@@ -122,17 +121,17 @@ const ProjectDetails = () => {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className={`bg-gray-50 rounded-none ${isMobile ? 'p-4 static' : 'p-6 sticky top-24'}`}
+                className={`bg-gray-800 rounded-none ${isMobile ? 'p-4 static' : 'p-6 sticky top-24'}`}
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Project Details</h3>
+                <h3 className="text-lg font-semibold text-gray-100 mb-4">Project Details</h3>
                 
                 <div className="mb-6">
-                  <h4 className="font-medium text-gray-900 mb-2">Technologies Used</h4>
+                  <h4 className="font-medium text-gray-100 mb-2">Technologies Used</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-white text-gray-700 text-sm rounded-none border"
+                        className="px-3 py-1 bg-gray-700 text-gray-300 text-sm rounded-none border border-gray-600"
                       >
                         {tech}
                       </span>

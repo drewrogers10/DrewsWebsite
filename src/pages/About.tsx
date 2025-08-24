@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import SignalToNoiseAnimation from '../components/SignalToNoiseAnimation';
 import { useMobileDetection } from '../hooks/useMobileDetection';
@@ -58,7 +57,7 @@ const About = () => {
       </section>
 
       {/* Bio Section */}
-      <section className="section-padding bg-white dark:bg-gray-900">
+      <section className="section-padding bg-gray-900">
         <div className={`container ${isMobile ? 'px-4' : ''}`}>
           <div className={`grid gap-12 items-center ${isMobile ? 'grid-cols-1' : 'lg:grid-cols-2'}`}>
             <motion.div
@@ -78,10 +77,10 @@ const About = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h2 className={`font-bold text-gray-900 dark:text-gray-100 mb-6 ${isMobile ? 'text-2xl text-center' : 'text-3xl'}`}>
+              <h2 className={`font-bold text-gray-100 mb-6 ${isMobile ? 'text-2xl text-center' : 'text-3xl'}`}>
                 Hi, I'm Drew
               </h2>
-              <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+              <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                   I'm a passionate full-stack developer with over 5 years of experience creating 
                   digital solutions that combine beautiful design with robust functionality. My 
@@ -105,7 +104,7 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-900">
+      <section className="section-padding bg-gray-800">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -114,10 +113,10 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
               My Values & Approach
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               These principles guide every project I work on and every line of code I write.
             </p>
           </motion.div>
@@ -130,17 +129,17 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className={`bg-white dark:bg-gray-800 rounded-none shadow-md hover:shadow-lg transition-shadow duration-300 ${isMobile ? 'p-4' : 'p-6'}`}
+                className={`bg-gray-800 rounded-none shadow-md hover:shadow-lg transition-shadow duration-300 ${isMobile ? 'p-4' : 'p-6'}`}
               >
                 <div className="flex items-start">
                   <div className="text-3xl mr-4 flex-shrink-0">
                     {value.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <h3 className="text-xl font-semibold text-gray-100 mb-2">
                       {value.title}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-300">
                       {value.description}
                     </p>
                   </div>
@@ -152,7 +151,7 @@ const About = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="section-padding bg-white dark:bg-gray-900">
+      <section className="section-padding bg-gray-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -161,10 +160,10 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
               Skills & Technologies
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
               A comprehensive toolkit for building modern web applications from concept to deployment.
             </p>
           </motion.div>
@@ -179,14 +178,14 @@ const About = () => {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <h3 className={`font-semibold text-gray-900 dark:text-gray-100 mb-4 ${isMobile ? 'text-lg' : 'text-xl'}`}>
+                <h3 className={`font-semibold text-gray-100 mb-4 ${isMobile ? 'text-lg' : 'text-xl'}`}>
                   {skillGroup.category}
                 </h3>
                 <div className="flex flex-wrap justify-center gap-2">
                   {skillGroup.items.map((skill) => (
                     <span
                       key={skill}
-                      className={`bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-none hover:bg-accent hover:text-primary transition-colors duration-200 ${
+                      className={`bg-gray-700 text-gray-300 rounded-none hover:bg-accent hover:text-primary transition-colors duration-200 ${
                         isMobile ? 'px-2 py-1 text-xs' : 'px-3 py-2 text-sm'
                       }`}
                     >

@@ -25,7 +25,7 @@ const Home = () => {
     getChaosLevel
   } = useVerticalScroll(sections);
 
-  const { isMobile, isTablet } = useMobileDetection();
+  const { isMobile } = useMobileDetection();
 
 
 

@@ -49,7 +49,7 @@ export const ScrollSection: React.FC<ScrollSectionProps> = ({
         min-h-screen w-full
         flex flex-col justify-center items-center
         relative overflow-hidden
-        bg-gray-900/20 dark:bg-gray-900/30
+        bg-gray-900/30
         ${className}
       `}
       style={{

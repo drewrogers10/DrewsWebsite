@@ -7,7 +7,7 @@ const Projects = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header Section */}
-      <section className="bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 text-white py-20 relative overflow-hidden">
         <SignalToNoiseAnimation />
         <div className="container">
           <motion.div
@@ -28,7 +28,7 @@ const Projects = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-900">
+      <section className="section-padding bg-gray-900">
         <div className="container">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projectsData.map((project, index) => (
@@ -48,10 +48,10 @@ const Projects = () => {
             viewport={{ once: true }}
             className="text-center mt-16"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-100 mb-4">
               Interested in Working Together?
             </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
               I'm always excited to take on new challenges and collaborate on innovative projects.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

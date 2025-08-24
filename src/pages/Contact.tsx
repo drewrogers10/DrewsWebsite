@@ -14,6 +14,7 @@ interface ContactMethod {
   value: string;
   href: string;
   icon: React.ReactElement;
+  description: string;
 }
 
 const Contact = () => {
@@ -55,6 +56,7 @@ const Contact = () => {
       title: "Email",
       value: "drew@example.com",
       href: "mailto:drew@example.com",
+      description: "Send me an email",
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -65,6 +67,7 @@ const Contact = () => {
       title: "LinkedIn",
       value: "linkedin.com/in/drewrogers10",
       href: "https://linkedin.com/in/drewrogers10",
+      description: "Connect with me professionally",
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -75,9 +78,10 @@ const Contact = () => {
       title: "GitHub",
       value: "github.com/drewrogers10",
       href: "https://github.com/drewrogers10",
+      description: "Check out my code",
       icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
       )
     }
@@ -106,7 +110,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Info */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-900">
+      <section className="section-padding bg-gray-900">
         <div className={`container ${isMobile ? 'px-4' : ''}`}>
           <div className={`grid gap-12 ${isMobile ? 'grid-cols-1' : 'lg:grid-cols-2'}`}>
             {/* Contact Form */}
@@ -114,9 +118,9 @@ const Contact = () => {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className={`bg-white dark:bg-gray-800 rounded-none shadow-md ${isMobile ? 'p-4' : 'p-8'}`}
+              className={`bg-gray-800 rounded-none shadow-md ${isMobile ? 'p-4' : 'p-8'}`}
             >
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+              <h2 className="text-2xl font-bold text-gray-100 mb-6">
                 Send me a message
               </h2>
               
@@ -134,7 +138,7 @@ const Contact = () => {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
                     Name *
                   </label>
                   <input
@@ -144,7 +148,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className={`w-full border border-gray-300 dark:border-gray-600 rounded-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                    className={`w-full border border-gray-600 rounded-none bg-gray-700 text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
                       isMobile ? 'px-3 py-4 text-base min-h-[44px]' : 'px-4 py-3'
                     }`}
                     placeholder="Your full name"
@@ -152,7 +156,7 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                     Email *
                   </label>
                   <input
@@ -165,7 +169,7 @@ const Contact = () => {
                     inputMode="email"
                     autoCapitalize="none"
                     autoCorrect="off"
-                    className={`w-full border border-gray-300 dark:border-gray-600 rounded-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
+                    className={`w-full border border-gray-600 rounded-none bg-gray-700 text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent ${
                       isMobile ? 'px-3 py-4 text-base min-h-[44px]' : 'px-4 py-3'
                     }`}
                     placeholder="your.email@example.com"
@@ -173,7 +177,7 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
                     Message *
                   </label>
                   <textarea
@@ -183,7 +187,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={isMobile ? 6 : 10}
-                    className={`w-full border border-gray-300 dark:border-gray-600 rounded-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-vertical ${
+                    className={`w-full border border-gray-600 rounded-none bg-gray-700 text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-vertical ${
                       isMobile ? 'px-3 py-4 text-base' : 'px-4 py-3'
                     }`}
                     placeholder="Tell me about your project or how I can help..."
@@ -208,13 +212,13 @@ const Contact = () => {
               className="space-y-8"
             >
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">
-                  Let's connect
+                <h2 className="text-2xl font-bold text-gray-100 mb-6">
+                  Let's Connect
                 </h2>
-                <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                  I'm always open to discussing new opportunities, interesting projects, 
-                  or just having a chat about technology and development. Feel free to 
-                  reach out through any of the channels below.
+                <p className="text-gray-300 mb-8">
+                  I'm always interested in hearing about new opportunities and exciting projects. 
+                  Whether you're looking for a developer, have a question, or just want to say hello, 
+                  I'd love to hear from you.
                 </p>
               </div>
 
@@ -225,31 +229,35 @@ const Contact = () => {
                     href={method.href}
                     target={method.href.startsWith('http') ? '_blank' : undefined}
                     rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex items-center p-4 bg-white dark:bg-gray-800 rounded-none shadow-md hover:shadow-lg transition-shadow duration-300 group"
+                    className="bg-gray-800 rounded-none shadow-sm p-6 hover:shadow-md transition-shadow duration-300"
                   >
-                    <div className="text-accent group-hover:text-primary transition-colors mr-4">
-                      {method.icon}
+                    <div className="flex items-center mb-4">
+                      <div className="text-2xl mr-4">
+                        {method.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-100">
+                          {method.title}
+                        </h3>
+                        <p className="text-gray-300 text-sm">
+                          {method.description}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-medium text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors">
-                        {method.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm">
-                        {method.value}
-                      </p>
-                    </div>
+                    <p className="text-gray-200 font-medium">
+                      {method.value}
+                    </p>
                   </a>
                 ))}
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-none shadow-md p-6">
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-3">
+              <div className="bg-gray-800 rounded-none shadow-md p-6">
+                <h3 className="font-semibold text-gray-100 mb-3">
                   Response Time
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                <p className="text-gray-300 text-sm">
                   I typically respond to messages within 24-48 hours. For urgent 
-                  matters, please mention it in your message subject or reach out 
-                  via email directly.
+                  matters, please mention it in your message subject or reach out via LinkedIn.
                 </p>
               </div>
             </motion.div>
@@ -258,7 +266,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="section-padding bg-white dark:bg-gray-900">
+      <section className="section-padding bg-gray-900">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -267,7 +275,7 @@ const Contact = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
               Frequently Asked Questions
             </h2>
           </motion.div>
@@ -293,12 +301,12 @@ const Contact = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-gray-50 dark:bg-gray-800 rounded-none p-6"
+                className="bg-gray-800 rounded-none p-6"
               >
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                <h3 className="font-semibold text-gray-100 mb-2">
                   {faq.question}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-300">
                   {faq.answer}
                 </p>
               </motion.div>

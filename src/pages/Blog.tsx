@@ -32,7 +32,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Header Section */}
-      <section className="section-padding bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 dark:from-gradient-light-1 dark:via-gradient-light-2 dark:to-gradient-light-3 text-white relative overflow-hidden">
+      <section className="section-padding bg-gradient-to-br from-gradient-dark-1 via-gradient-dark-2 to-gradient-dark-3 text-white relative overflow-hidden">
         <SignalToNoiseAnimation />
         <div className="container">
           <motion.div
@@ -52,7 +52,7 @@ const Blog = () => {
       </section>
 
       {/* Blog Posts */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-900">
+      <section className="section-padding bg-gray-900">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             {sortedPosts.map((post, index) => (
@@ -61,10 +61,10 @@ const Blog = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-none shadow-md p-8 mb-8 hover:shadow-lg transition-shadow duration-300"
+                className="bg-gray-800 rounded-none shadow-md p-8 mb-8 hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-2 md:mb-0">
+                  <div className="flex items-center text-sm text-gray-400 mb-2 md:mb-0">
                     <time dateTime={post.date}>
                       {formatDate(post.date)}
                     </time>
@@ -76,7 +76,7 @@ const Blog = () => {
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded-none"
+                        className="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded-none"
                       >
                         {tag}
                       </span>
@@ -84,13 +84,13 @@ const Blog = () => {
                   </div>
                 </div>
 
-                <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4 hover:text-primary transition-colors">
+                <h2 className="text-2xl md:text-3xl font-bold text-gray-100 mb-4 hover:text-primary transition-colors">
                   <Link to={`/blog/${post.slug}`} className="focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded-none">
                     {post.title}
                   </Link>
                 </h2>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                <p className="text-gray-300 mb-6 leading-relaxed">
                   {post.summary}
                 </p>
 
@@ -113,19 +113,19 @@ const Blog = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-gray-800 rounded-none shadow-md p-8 max-w-2xl mx-auto text-center mt-12"
+            className="bg-gray-800 rounded-none shadow-md p-8 max-w-2xl mx-auto text-center mt-12"
           >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            <h3 className="text-2xl font-bold text-gray-100 mb-4">
               Stay Updated
             </h3>
-            <p className="text-gray-600 dark:text-gray-300 mb-6">
+            <p className="text-gray-300 mb-6">
               Get notified when I publish new articles about web development and design.
             </p>
             <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
+                className="flex-1 px-4 py-3 border border-gray-600 rounded-none bg-gray-700 text-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-transparent"
                 aria-label="Email address"
               />
               <button

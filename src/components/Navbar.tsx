@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const location = useLocation();
@@ -17,7 +16,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md z-50 shadow-sm border-b border-gray-200 dark:border-gray-700" role="navigation" aria-label="Main navigation">
+    <nav className="fixed w-full bg-gray-900/90 backdrop-blur-md z-50 shadow-sm border-b border-gray-700" role="navigation" aria-label="Main navigation">
       <div className="container flex items-center justify-between py-4">
         <Link 
           to="/" 
@@ -36,21 +35,19 @@ const Navbar = () => {
               className={`font-medium transition-colors hover:text-accent ${
                 isActive(link.path) 
                   ? "text-accent border-b-2 border-accent" 
-                  : "text-gray-700 dark:text-gray-300"
+                  : "text-gray-300"
               }`}
               aria-current={isActive(link.path) ? "page" : undefined}
             >
               {link.label}
             </Link>
           ))}
-          <ThemeToggle />
         </div>
 
-        {/* Mobile Menu Button and Theme Toggle */}
-        <div className="md:hidden flex items-center space-x-2">
-          <ThemeToggle />
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
           <button
-            className="p-2 text-gray-700 dark:text-gray-300 hover:text-accent focus:outline-none"
+            className="p-2 text-gray-300 hover:text-accent focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
@@ -69,14 +66,14 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div id="mobile-menu" className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 shadow-lg">
+        <div id="mobile-menu" className="md:hidden bg-gray-900 border-t border-gray-700 shadow-lg">
           <div className="container py-4">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={`block py-2 font-medium transition-colors hover:text-accent ${
-                  isActive(link.path) ? "text-accent" : "text-gray-700 dark:text-gray-300"
+                  isActive(link.path) ? "text-accent" : "text-gray-300"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={isActive(link.path) ? "page" : undefined}

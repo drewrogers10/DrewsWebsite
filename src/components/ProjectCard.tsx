@@ -36,11 +36,11 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
       </div>
       
       <div className="p-6">
-        <h3 className="font-semibold text-xl mb-2 text-gray-900 dark:text-gray-100 group-hover:text-primary transition-colors">
+        <h3 className="font-semibold text-xl mb-2 text-gray-100 group-hover:text-primary transition-colors">
           {project.title}
         </h3>
         
-        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
+        <p className="text-gray-300 mb-4 line-clamp-2">
           {project.summary}
         </p>
         
@@ -48,13 +48,13 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           {project.tech.slice(0, 3).map((tech) => (
             <span
               key={tech}
-              className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-none"
+              className="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded-none"
             >
               {tech}
             </span>
           ))}
           {project.tech.length > 3 && (
-            <span className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-none">
+            <span className="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded-none">
               +{project.tech.length - 3} more
             </span>
           )}
@@ -74,7 +74,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+                className="text-gray-400 hover:text-gray-200 transition-colors"
                 aria-label={`View ${project.title} on GitHub`}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -88,7 +88,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+                className="text-gray-400 hover:text-gray-200 transition-colors"
                 aria-label={`View ${project.title} live demo`}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
